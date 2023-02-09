@@ -6,7 +6,7 @@ interface NavProps {}
 
 const Face: React.FC<NavProps> = () => (
   <div className={cls.face}>
-    <img src={Photo} alt="" />
+    <img src="https://files.fm/thumb_show.php?i=4qt9g49rf" alt="" />
   </div>
 );
 

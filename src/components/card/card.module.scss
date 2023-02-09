@@ -1,0 +1,33 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: #000000;
+  border: 1px solid #fff;
+  border-radius: 13px;
+  color: #fff;
+  padding: 0.9rem 0.7rem;
+  @media (max-width: 1090px) {
+    padding: 0.5rem 0.4rem;
+  }
+  cursor: pointer;
+  img {
+    width: 100%;
+  }
+  p {
+    margin: 20px 0;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    text-align: center;
+    text-transform: capitalize;
+    @media (max-width: 1090px) {
+      font-size: 15px;
+      margin: 15px 0;
+    }
+    @media (max-width: 435px) {
+      margin: 5px 0;
+    }
+  }
+}

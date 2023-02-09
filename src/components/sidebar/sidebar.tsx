@@ -1,20 +1,16 @@
 import React from "react";
-import Card from "../../assets/icons/card";
-import Home from "../../assets/icons/home";
-import Portfolio from "../../assets/icons/portfolio";
-import Rgb from "../../assets/icons/rgb";
-
+import Card from "../../assets/icons/List/card";
+import Icons from "../../assets/icons";
 import cls from "./sidebar.module.scss";
+import { Links } from "./inside";
 
 interface AboutMeProps {}
 
 const AboutMe: React.FC<AboutMeProps> = () => (
   <div className={cls.wrapper}>
-    <a href="#home">{Home}</a>
-    <a href="#about">{Card}</a>
-    <a href="#projects">{Portfolio}</a>
-    <div>{Rgb}</div>
-    
+    {Links.map(({ link, iconName }) => (
+      <a href={link}>{<Icons name={iconName} />}</a>
+    ))}
   </div>
 );
 

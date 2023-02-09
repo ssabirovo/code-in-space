@@ -9,7 +9,6 @@ import {
   Technologies,
 } from "../../components";
 import Face from "../../components/face";
-import Portfolio from "../../assets/icons/portfolio";
 interface MainProps {}
 
 const Main: React.FC<MainProps> = () => (
@@ -23,13 +22,13 @@ const Main: React.FC<MainProps> = () => (
           </div>
           <Face />
         </div>
-        <div className={cls.section}>
+        <div id="about" className={cls.section}>
           <AboutMe />
         </div>
         <div className={cls.section}>
           <Technologies />
         </div>
-        <div className={cls.section}>
+        <div id="projects" className={cls.section}>
           <Projects />
         </div>
       </div>

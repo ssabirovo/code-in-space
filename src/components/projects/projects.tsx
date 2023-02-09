@@ -17,9 +17,7 @@ const Projects: React.FC<projectsItem> = () => (
       <div className={cls.title}>Projects</div>
       <div className={cls["projects-box"]}>
         {items.map((item) => (
-
-            <img className={cls.img} src={item} alt="" />
-
+          <img className={cls.img} src={item} alt="" />
         ))}
       </div>
       <p className={cls.see}>see more</p>
