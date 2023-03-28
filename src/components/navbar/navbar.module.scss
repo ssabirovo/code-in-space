@@ -1,0 +1,20 @@
+.navbar {
+  padding: 1rem 9%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: -webkit-fill-available;
+
+  .auth {
+    display: flex;
+    gap: 20px;
+    p {
+      cursor: pointer;
+    }
+    div {
+      width: 2px;
+      background-color: var();
+    }
+  }
+}

@@ -1,39 +1,21 @@
 import React from "react";
+import Navbar from "../../components/navbar/navbar";
 import cls from "./main.module.scss";
-import Logo from "../../assets/svg/logo.svg";
-import {
-  AboutMe,
-  Links,
-  Projects,
-  Sidebar,
-  Technologies,
-} from "../../components";
-import Face from "../../components/face";
+
 interface MainProps {}
 
 const Main: React.FC<MainProps> = () => (
   <div className={cls.main}>
-    <Sidebar />
-    <div className={cls.middle}>
-      <div className={cls.rerr}>
-        <div id="home" className={cls.section}>
-          <div className={cls["logo-wrapper"]}>
-            <img src={Logo} alt="" />
-          </div>
-          <Face />
-        </div>
-        <div id="about" className={cls.section}>
-          <AboutMe />
-        </div>
-        <div className={cls.section}>
-          <Technologies />
-        </div>
-        <div id="projects" className={cls.section}>
-          <Projects />
-        </div>
+    <Navbar />
+    <div className={cls.header}>
+      <div className={cls.title}>
+        <h1>Let’s code in space</h1>
+        <p>
+          Created for learning. Designed with love. Made for improve knowledge.
+          Welcome to the platform coders love
+        </p>
       </div>
     </div>
-    <Links />
   </div>
 );
 

@@ -1,21 +1,15 @@
 import "./assets/base.scss";
-import { Route, Switch, Redirect } from "react-router-dom";
-
+import { Route, Routes } from "react-router-dom";
 import Main from "./pages/main/main";
-import MoreProjects from "./pages/more-projects/more-projects";
+import { Suspense } from "react";
 
 function App() {
   return (
-    <>
-      <Switch>
-        <Route exact path={"/"} render={(props) => <Main {...props} />} />
-        <Route
-          exact
-          path={"/projects"}
-          render={(props) => <MoreProjects {...props} />}
-        />
-      </Switch>
-    </>
+    <Suspense fallback={null}>
+      <Routes>
+        <Route path="/" element={<Main />} />
+      </Routes>
+    </Suspense>
   );
 }
 
