@@ -18,6 +18,22 @@ client/.env.development.local
 client/.env.test.local
 client/.env.production.local
 
+server/node_modules
+server/.pnp
+
+# testing
+server/coverage
+
+# production
+server/build
+
+# misc
+server/.DS_Store
+server/.env.local
+server/.env.development.local
+server/.env.test.local
+server/.env.production.local
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
