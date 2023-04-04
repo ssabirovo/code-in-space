@@ -1,7 +1,7 @@
-import "./assets/base.scss";
 import { Route, Routes } from "react-router-dom";
 import Main from "./pages/main/main";
 import { Suspense } from "react";
+import "./assets/base.scss";
 
 function App() {
   return (

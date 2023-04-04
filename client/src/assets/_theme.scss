@@ -1,0 +1,16 @@
+@mixin theme-light {
+  --primary: #0a0c11;
+  --secondary: #e1e1e5;
+  --gray-text: #b4b4b4;
+  --heder-text-shadow: #9b18ebd4;
+  --title-text: #52ff00;
+  --card-shadow-blue: rgba(96, 174, 218, 0.45);
+  --card-shadow-red: rgba(218, 96, 96, 0.45);
+  --card-shadow-yellow: rgba(218, 191, 96, 0.45);
+  --card-shadow-green: rgba(96, 218, 123, 0.45);
+  --card-shadow-purple: rgba(164, 96, 218, 0.45);
+  --card-shadow-pink: rgba(218, 96, 192, 0.45);
+  --card-shadow-none: rgba(218, 96, 192, 0);
+  --card-bg: #111927;
+  --card-nav-bg: #1a2332;
+}

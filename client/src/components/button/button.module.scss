@@ -1,0 +1,31 @@
+@import "../../assets/mixins";
+
+.button {
+  width: max-content;
+  @include d-flex(center, center, column);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  // cursor: none;
+
+  div {
+    transition: 0.15s linear;
+    position: absolute;
+    overflow: hidden;
+    // bottom: -30px;
+    transform: translateY(30px);
+    width: 23px;
+    height: 23px;
+    opacity: 0;
+  }
+  &:hover div {
+    opacity: 100%;
+  }
+}
+.active {
+  div {
+    opacity: 100%;
+  }
+}

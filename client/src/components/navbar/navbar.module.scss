@@ -3,18 +3,29 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
+  position: absolute;
   width: -webkit-fill-available;
-
+  z-index: 1;
+  .logo {
+    @media (max-width: 768px) {
+      width: 80px;
+    }
+  }
   .auth {
     display: flex;
     gap: 20px;
-    p {
-      cursor: pointer;
+    @media (max-width: 768px) {
+      gap: 10px;
     }
-    div {
+    p {
+      font-size: 20px;
+      @media (max-width: 768px) {
+        font-size: 14px;
+      }
+    }
+    .devider {
       width: 2px;
-      background-color: var();
+      background-color: var(--secondary);
     }
   }
 }
