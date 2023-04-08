@@ -3,10 +3,12 @@ import cls from "./card.module.scss";
 import Icon from "../../../../assets/icons/icons";
 import { useRef } from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface CardProps {
   title: string;
   description: string;
+  onClick?: () => void;
 }
 
 export const bgColorsData = [
@@ -19,8 +21,9 @@ export const bgColorsData = [
   "--card-shadow-pink",
 ];
 
-const Card: React.FC<CardProps> = ({ title, description }) => {
+const Card: React.FC<CardProps> = ({ title, description, onClick }) => {
   const [color, setColor] = useState<number>(0);
+  const navigate = useNavigate();
 
   const handleMouse: React.MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation();
@@ -30,6 +33,7 @@ const Card: React.FC<CardProps> = ({ title, description }) => {
 
   return (
     <div
+      onClick={() => navigate(`/${title}`)}
       style={{
         boxShadow: `0px 0px 34px var(${bgColorsData[color]})`,
       }}
