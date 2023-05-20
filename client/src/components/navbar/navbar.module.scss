@@ -6,6 +6,10 @@
   position: absolute;
   width: -webkit-fill-available;
   z-index: 1;
+  * {
+    margin: 0;
+    padding: 0;
+  }
   .logo {
     @media (max-width: 768px) {
       width: 80px;

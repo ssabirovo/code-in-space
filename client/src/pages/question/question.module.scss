@@ -1,5 +1,12 @@
 .wrapper {
-  padding: 0rem 9%;
+  padding: 0rem 2%;
+  margin-bottom: 2rem;
+
+  * {
+    margin: 0;
+    padding: 0;
+    color: var(--gray-text);
+  }
   .container {
     background-color: var(--card-bg);
     border-radius: 23px;
@@ -21,43 +28,118 @@
   .content {
     padding: 1rem 2rem;
     @media (max-width: 640px) {
-        padding: 1rem 1rem;
+      padding: 1rem 1rem;
     }
-    .title {
-      padding: 1rem 0;
-      font-weight: 400;
-      font-size: 24px;
-      color: var(--title-text);
-    }
-    .description {
-      font-style: normal;
-      font-size: 14px;
-      color: var(--gray-text);
-    }
-    .questions {
-      padding: 1rem 0;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
+
+    .address {
+      display: flex;
+      align-items: center;
       gap: 20px;
-      p {
+      * {
         color: var(--blue-text);
+        font-weight: 600;
         font-size: 18px;
-        line-height: 22px;
+      }
+      .questions {
+        font-weight: 600;
+        font-size: 24px;
+        color: var(--title-text);
+      }
+    }
+    .examples {
+      padding: 30px 0;
+    }
+    .solve {
+      background: var(--title-text);
+      border-radius: 8px;
+      color: var(--card-bg);
+      padding: 10px 30px;
+      border: none;
+      margin-bottom: 5px;
+      width: 100px;
+
+      transition-property: all;
+      transition-duration: 0.2s;
+      transition-timing-function: linear;
+      transition-delay: 0s;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translateZ(0);
+      text-decoration: none;
+      overflow: hidden;
+
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition-property: transform;
+        transition-duration: 0.2s;
+        transition-timing-function: linear;
+        transition-delay: 0s;
+        display: block;
+        width: 100%;
+        height: 100%;
+        content: "";
+        // background-color: rgba(255, 255, 255, 0.2);
+        transform: scale(0, 1);
+        transform-origin: right top;
+        z-index: -1;
+      }
+      &::after {
+        position: absolute;
+        top: 1px;
+        right: -20%;
+        transition-property: all;
+        transition-duration: 0.2s;
+        transition-timing-function: linear;
+        transition-delay: 0s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 40px;
+        content: "\f04b";
+        font-family: "Font Awesome 5 Free";
+        font-size: 25px;
+        font-weight: 900;
+        line-height: inherit;
+        opacity: 0;
+      }
+      &:hover {
+        padding-left: 10px;
+      }
+      &:hover::before {
+        transform: scale(1, 1);
+        transform-origin: left top;
+      }
+      &:hover::after {
+        right: 0;
+        opacity: 1;
+      }
+    }
+    .coding {
+      display: flex;
+      textarea {
         transition: 0.2s linear;
-        &:hover {
-          color: var(--title-text);
-          text-shadow: 0px 0px 14px #52ff00;
+        border-radius: 8px;
+        border: 1px solid var(--card-nav-bg) !important;
+        &:focus {
+          transition: 0.3s linear;
+          border: 1px solid var(--title-text) !important;
         }
       }
-      @media (max-width: 960px) {
-        grid-template-columns: repeat(3, 1fr);
-        p {
-          font-size: 16px;
-        }
-      }
-      @media (max-width: 640px) {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    }
+    .textarea {
+      background: var(--card-nav-bg);
+      border-radius: 8px;
+      border: 1px solid var(--card-nav-bg) !important;
+      font-size: 14px;
+      width: 45%;
+      min-height: 300px;
+      overflow: scroll;
+      transition: 0.2s linear;
     }
   }
 }
