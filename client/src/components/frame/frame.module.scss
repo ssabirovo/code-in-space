@@ -1,0 +1,35 @@
+.navbar {
+  padding: 1rem 9%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  width: -webkit-fill-available;
+  z-index: 1;
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  .logo {
+    @media (max-width: 768px) {
+      width: 80px;
+    }
+  }
+  .auth {
+    display: flex;
+    gap: 20px;
+    @media (max-width: 768px) {
+      gap: 10px;
+    }
+    p {
+      font-size: 20px;
+      @media (max-width: 768px) {
+        font-size: 14px;
+      }
+    }
+    .devider {
+      width: 2px;
+      background-color: var(--secondary);
+    }
+  }
+}

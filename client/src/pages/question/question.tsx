@@ -10,7 +10,7 @@ interface MainProps {}
 const Question: React.FC<MainProps> = () => {
   const navigate = useNavigate();
   const { question, questions } = useParams();
-  const values = "function add(a, b) {\n  return a + b;\n}";
+  const values = `function ${question} (a) {\n  return "";\n}`;
 
   console.log(question, questions);
 
@@ -54,6 +54,25 @@ const Question: React.FC<MainProps> = () => {
                 value={values}
                 padding={20}
               />
+              <table className={cls.table}>
+                <thead>
+                  <th>Test -Expected</th>
+                  <th>Yours</th>
+                </thead>
+                <tr>
+                  <td>monkeyTrouble(true, true) → true</td>
+                  <td className={cls.iconRight}>
+                    true {<i className="fa-solid fa-check"></i>}
+                  </td>
+                </tr>
+                <tr>
+                  <td>doubleChar("Hi-There") → "HHii--TThheerree"</td>
+                  <td className={cls.iconWrong}>
+                    HHii--TThheerree{" "}
+                    {<i className="fa-solid fa-check iconWrong"></i>}
+                  </td>
+                </tr>
+              </table>
             </div>
           </div>
         </div>

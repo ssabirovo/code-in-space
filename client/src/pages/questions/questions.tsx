@@ -28,9 +28,10 @@ const Questions: React.FC<MainProps> = () => {
               Simple warmup problems to get started
             </p>
             <div className={cls.questions}>
-              {questionsData.map(({ title }) => (
+              {questionsData.map(({ title, checked }) => (
                 <p onClick={() => navigate(`/${questions}/${title}`)}>
                   {title}
+                  {checked && <i className="fa-solid fa-check"></i>}
                 </p>
               ))}
             </div>
