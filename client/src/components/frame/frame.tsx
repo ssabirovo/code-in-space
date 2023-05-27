@@ -1,15 +1,17 @@
-import React, { Children } from "react";
-import cls from "./frame.module.scss";
+import React from "react";
 import Icon from "../../assets/icons/icons";
+import cx from "classnames";
+import cls from "./frame.module.scss";
 
 interface NavProps {
-  children?: JSX.Element;
+  children?: JSX.Element[] | JSX.Element;
+  className?: string;
+  onClick?: (e?: React.MouseEvent<HTMLDivElement>) => void;
 }
 
-const Frame: React.FC<NavProps> = ({ children }) => {
+const Frame: React.FC<NavProps> = ({ children, className, onClick }) => {
   return (
-    <div className={cls.wrapper}>
-      <div className={cls.none}>1</div>
+    <div className={cx(cls.wrapper, className)} onClick={onClick}>
       <div className={cls.container}>
         <div className={cls.nav}>
           <Icon name="RedPlanet" />

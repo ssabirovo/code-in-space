@@ -1,9 +1,9 @@
 import React from "react";
-import cls from "./card.module.scss";
 import Icon from "../../../../assets/icons/icons";
 import { useRef } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import cls from "./card.module.scss";
 
 interface CardProps {
   title: string;

@@ -1,9 +1,9 @@
 import React from "react";
 import Navbar from "../../components/navbar/navbar";
-import cls from "./questions.module.scss";
 import Icon from "../../assets/icons/icons";
 import { questionsData } from "./questionsData";
 import { useNavigate, useParams } from "react-router-dom";
+import cls from "./questions.module.scss";
 
 interface MainProps {}
 

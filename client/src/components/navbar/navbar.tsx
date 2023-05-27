@@ -17,9 +17,7 @@ const Navbar: React.FC<NavProps> = () => {
         className={cls.logo}
       />
       <div className={cls.auth}>
-        <Button planet="GreenPlanet" content="Sign Up" />
-        <div className={cls.devider}></div>
-        <Button content="Sign In" planet="YellowPlanet" />
+        <Button onClick={()=>navigate("/login")} content="Login" planet="YellowPlanet" />
       </div>
     </div>
   );

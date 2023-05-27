@@ -130,6 +130,7 @@
         transition: 0.2s linear;
         border-radius: 8px;
         border: 1px solid var(--card-nav-bg) !important;
+        cursor: url("../../assets/svg/cursor-input.svg"), auto;
         &:focus {
           transition: 0.3s linear;
           border: 1px solid var(--title-text) !important;
@@ -149,6 +150,7 @@
       overflow: scroll;
       transition: 0.2s linear;
       caret-color: var(--title-text);
+      
       @media (max-width: 1020px) {
         width: 100%;
       }
