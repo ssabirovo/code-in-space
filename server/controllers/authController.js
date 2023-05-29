@@ -14,6 +14,9 @@ import {
     verifyRefreshToken,
 } from '../services/tokenService.js';
 import {OAuth2Client} from 'google-auth-library';
+import cookie from "cookie";
+import moment from "moment";
+import {userMapper} from "../utils/mapper/userMapper.js";
 
 
 const register = async (req, res, next) => {
@@ -26,7 +29,13 @@ const register = async (req, res, next) => {
             source: "email"
         });
         const tokens = await generateAuthTokens(newUser)
-        res.json({user: newUser, tokens});
+        res.cookie("refreshToken", tokens.refreshToken, {
+            expires: moment().day(process.env.REFRESH_TOKEN_EXPIRATION_DAYS).toDate(),
+            httpOnly: true,
+            secure: true,
+            path: "/",
+        })
+        res.json({user: userMapper(newUser), tokens});
     } catch (error) {
         next(error);
     }
@@ -36,7 +45,13 @@ const login = async (req, res, next) => {
     try {
         const user = await fetchUserFromEmailAndPassword(req.body);
         const tokens = await generateAuthTokens(user);
-        res.json({user, tokens});
+        res.cookie("refreshToken", tokens.refreshToken, {
+            expires: moment().day(process.env.REFRESH_TOKEN_EXPIRATION_DAYS).toDate(),
+            httpOnly: true,
+            secure: true,
+            path: "/",
+        })
+        res.json({user: userMapper(user), tokens});
     } catch (error) {
         next(error);
     }
@@ -53,12 +68,12 @@ const logout = async (req, res, next) => {
 
 const refreshToken = async (req, res, next) => {
     try {
-        let refreshTokenPayload = await verifyRefreshToken(req.body.refreshToken);
+        let refreshToken = req.cookies.refreshToken || '';
+        let refreshTokenPayload = await verifyRefreshToken(refreshToken);
         await verifyUserFromRefreshTokenPayload(refreshTokenPayload);
         let newAccessToken = await generateAccessTokenFromRefreshTokenPayload(
             refreshTokenPayload
         );
-
         res.json({
             accessToken: newAccessToken,
         });

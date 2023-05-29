@@ -27,7 +27,7 @@ const converter = (err, req, res, next) => {
         );
     } else if (!(err instanceof APIError)) {
         let uuid = uuidv4();
-        logger.error({uuid, ...err});
+        logger.error(JSON.stringify({uuid, ...err}));
         convertedError = new APIError(
             err.statusCode || httpStatus.INTERNAL_SERVER_ERROR,
             httpStatus[500],

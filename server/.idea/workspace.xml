@@ -5,50 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a242f37-05d3-494e-b3d9-39c605ab7401" name="Changes" comment="server setup">
-      <change afterPath="$PROJECT_DIR$/../.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/code-in-space-server.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/logger.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/tokens.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/authController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/userController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/middlewares/error.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/middlewares/isActiveUser.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/RefreshTokenModel.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/UserModel.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/authRoute.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/userRoute.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/authService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/tokenService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/userService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/ApiError.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/cloudinary.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/jwtHelpers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/multer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/passwordStrengthValidation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/yupValidations.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/validations/authValidations.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/validations/userValidations.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../client/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -103,11 +72,33 @@
       <workItem from="1680095920226" duration="104000" />
       <workItem from="1680262715784" duration="1542000" />
       <workItem from="1680264327988" duration="286000" />
+      <workItem from="1680264618052" duration="716000" />
+      <workItem from="1681729184856" duration="47000" />
+      <workItem from="1682189393130" duration="97000" />
     </task>
+    <task id="LOCAL-00001" summary="server setup">
+      <created>1680265304807</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1680265304807</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="server setup" />

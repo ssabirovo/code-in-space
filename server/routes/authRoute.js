@@ -18,7 +18,7 @@ router
 
 router
     .route('/refresh-token')
-    .post(trimRequest.all, validate(schemas.refreshTokenSchema), controller.refreshToken);
+    .get(trimRequest.all, controller.refreshToken);
 
 router
     .route('/register')

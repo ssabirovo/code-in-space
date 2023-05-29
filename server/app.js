@@ -7,6 +7,8 @@ import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import routes from './routes/index.js';
 import error from './middlewares/error.js';
+import {cookieParser} from "./middlewares/cookieParser.js";
+
 
 const app = express();
 
@@ -15,7 +17,11 @@ if (process.env.NODE_ENV !== 'production') {
     app.use(morgan('dev'));
 }
 
+
 app.use(helmet());
+
+
+app.use(cookieParser)
 
 // parse json request body
 app.use(bodyParser.json());
