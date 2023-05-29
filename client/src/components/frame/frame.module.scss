@@ -1,0 +1,24 @@
+.wrapper {
+  // padding: 0rem 2%;
+  // margin-bottom: 2rem;
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    background-color: var(--card-bg);
+    border-radius: 23px;
+    overflow: hidden;
+  }
+
+  .nav {
+    display: flex;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: var(--card-nav-bg);
+    div {
+      width: 18px;
+    }
+  }
+}

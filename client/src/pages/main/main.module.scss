@@ -1,18 +1,16 @@
 .main {
   display: flex;
   flex-direction: column;
-
   .header {
     padding: 0rem 9%;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-image: url("../../assets/images/MacBook\ Air\ -\ 4.png");
+    background-image: url("../../assets/images/mainPlanet.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-
     .title {
       transform: translate(0, 100px);
       h1 {
@@ -28,6 +26,43 @@
         text-shadow: 7px 4px 220px var(--heder-text-shadow);
         width: 50%;
       }
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 32px;
+        }
+        p {
+          padding-top: 25px;
+          font-size: 16px;
+          width: 99%;
+          
+        }
+      }
+    }
+  }
+  .questions {
+    padding: 0rem 9%;
+    .buttons {
+      display: flex;
+      
+      font-size: 20px;
+      gap: 30px;
+    }
+  }
+  .cards {
+    margin: 5rem 0;
+    height: max-content;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    // grid-template-rows: repeat(3, 1fr);
+    gap: 40px;
+    @media (max-width: 992px) {
+      gap: 20px;
+    }
+    @media (max-width: 800px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 576px) {
+      grid-template-columns: repeat(1, 1fr);
     }
   }
 }
