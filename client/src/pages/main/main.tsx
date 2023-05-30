@@ -19,7 +19,7 @@ const Main: React.FC<MainProps> = () => {
           <h1>Let’s code in space</h1>
           <p>
             Created for learning. Designed with love. Made for improve
-            knowledge. Welcome to the platform coders love
+            knowledge. Welcome to the platform that coders love
           </p>
         </div>
       </div>

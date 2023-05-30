@@ -1,0 +1,29 @@
+.wrapper {
+  border: none;
+  background-color: transparent;
+  width: 400px;
+  border-bottom: 4px solid var(--card-nav-bg);
+  outline: none;
+  padding: 1rem;
+  font-weight: 400;
+  font-size: 16px;
+  caret-color: var(--title-text);
+  color: var(--title-text);
+  cursor: url("../../assets/svg/cursor-input.svg"), auto;
+  &::placeholder {
+    color: var(--card-shadow-green);
+  }
+  &:focus {
+    border-bottom: 4px solid var(--title-text);
+  }
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    box-shadow: 0 0 0 50px var(--card-bg) inset;
+    -webkit-text-fill-color: var(--title-text);
+    outline: none;
+  }
+  @media (max-width: 494px) {
+    width: 100%;
+  }
+}

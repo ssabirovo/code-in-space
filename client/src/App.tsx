@@ -3,8 +3,10 @@ import Main from "./pages/main/main";
 import Questions from "./pages/questions/questions";
 import Question from "./pages/question/question";
 import Workshop from "./pages/workshop/workshop";
-import Login from "./pages/login/login";
+import Login from "./pages/signUp/signUp";
 import "./assets/base.scss";
+import SignUp from "./pages/signUp/signUp";
+import SignIn from "./pages/signIn/signIn";
 
 function App(): JSX.Element {
   return (
@@ -13,7 +15,8 @@ function App(): JSX.Element {
       <Route path="/:questions" element={<Questions />} />
       <Route path="/:questions/:question" element={<Question />} />
       <Route path="/workshop" element={<Workshop />} />
-      <Route path="/login" element={<Login />} />
+      <Route path="/signUp" element={<SignUp />} />
+      <Route path="/signIn" element={<SignIn />} />
     </Routes>
   );
 }
