@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "incremental": false,
+    "target": "ES6",
+    "module": "commonjs",
+    "rootDir": "src",
+    "outDir": "./build",
+    "removeComments": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "skipLibCheck": true
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "compileOnSave": true
+}
