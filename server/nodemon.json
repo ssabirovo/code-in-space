@@ -1,7 +1,7 @@
 {
-  "ignore": ["build", "node_modules"],
+  "ignore": ["build","node_modules"],
   "signal": "SIGTERM",
-  "ext": "ts",
-  "exec": "npm run build & node build/index.js",
+  "ext": "*",
+  "exec": "ts-node src/index.ts",
   "watch": ["src", "package.json", ".env"]
 }

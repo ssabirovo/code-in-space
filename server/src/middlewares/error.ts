@@ -17,6 +17,7 @@ const handler = (err, req, res, next) => {
 };
 
 const converter = (err, req, res, next) => {
+    logger.error(err)
     let convertedError = err;
     if (err instanceof ValidationError) {
         convertedError = new APIError(

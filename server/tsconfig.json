@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "incremental": false,
     "target": "ES6",
     "module": "commonjs",
     "rootDir": "src",
@@ -15,5 +14,4 @@
   "exclude": [
     "node_modules"
   ],
-  "compileOnSave": true
 }
