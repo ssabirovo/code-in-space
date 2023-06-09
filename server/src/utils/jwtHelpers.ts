@@ -12,17 +12,15 @@ export const sign = async (payload, secret) => {
     });
 };
 
-export const verify = async (token: string, secret: string): Promise<JwtPayload> => {
+export const verify = async <T extends {[key: string]: any}>(token: string, secret: string): Promise<JwtPayload & T> => {
     return new Promise((resolve) => {
         jwt.verify(token, secret, (error, payload) => {
             if (error) {
                 resolve(null);
+            } else if (typeof payload !== "string") {
+                resolve(payload as JwtPayload & T);
             } else {
-                if (typeof payload !== "string") {
-                    resolve(payload);
-                } else {
-                    resolve(null)
-                }
+                resolve(null)
             }
         });
     });

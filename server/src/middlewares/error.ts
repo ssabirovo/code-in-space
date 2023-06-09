@@ -5,7 +5,7 @@ import logger from '../config/logger';
 
 import APIError from '../utils/ApiError';
 
-const handler = (err, req, res, next) => {
+const handler = (err: APIError, req, res, next) => {
     const response = {
         statusCode: err.statusCode || httpStatus.INTERNAL_SERVER_ERROR,
         message: err.message || httpStatus[500],
@@ -17,7 +17,6 @@ const handler = (err, req, res, next) => {
 };
 
 const converter = (err, req, res, next) => {
-    logger.error(err)
     let convertedError = err;
     if (err instanceof ValidationError) {
         convertedError = new APIError(

@@ -1,3 +1,3 @@
-import express from "express"
+import {RequestHandler} from "express-serve-static-core"
 
-export type ControllerHandler=(req: express.Request, res: express.Response, next: express.NextFunction)=>Promise<void>
+export type ControllerHandler=RequestHandler

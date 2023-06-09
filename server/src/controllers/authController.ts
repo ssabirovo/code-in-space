@@ -17,16 +17,19 @@ import {OAuth2Client} from 'google-auth-library';
 import moment from "moment";
 import {userMapper} from "../utils/mapper/userMapper";
 import ApiError from "../utils/ApiError";
+import {ROLE} from "../models/UserModel";
+import {ControllerHandler} from "../types/controller";
 
 
-const register = async (req, res, next) => {
+const register: ControllerHandler = async (req, res, next) => {
     const {email, password} = req.body
     try {
         const hashedPassword = await bcryptjs.hash(password, 10);
         const newUser = await createNewUser({
             email: email,
             password: hashedPassword,
-            source: "email"
+            source: "email",
+            role: ROLE.USER,
         });
         const tokens = await generateAuthTokens(newUser)
         res.cookie("refreshToken", tokens.refreshToken, {
@@ -41,7 +44,7 @@ const register = async (req, res, next) => {
     }
 };
 
-const login = async (req, res, next) => {
+const login: ControllerHandler = async (req, res, next) => {
     try {
         const user = await fetchUserFromEmailAndPassword(req.body);
         const tokens = await generateAuthTokens(user);
@@ -57,7 +60,7 @@ const login = async (req, res, next) => {
     }
 };
 
-const logout = async (req, res, next) => {
+const logout: ControllerHandler = async (req, res, next) => {
     try {
         await clearRefreshToken(req.body.refreshToken);
         res.json({});
@@ -66,7 +69,7 @@ const logout = async (req, res, next) => {
     }
 };
 
-const refreshToken = async (req, res, next) => {
+const refreshToken: ControllerHandler = async (req, res, next) => {
     try {
         let refreshToken = req.cookies.refreshToken || '';
         let refreshTokenPayload = await verifyRefreshToken(refreshToken);
@@ -82,10 +85,10 @@ const refreshToken = async (req, res, next) => {
     }
 };
 
-const resetPassword = async (req, res, next) => {
+const resetPassword: ControllerHandler = async (req, res, next) => {
     try {
-        await verifyCurrentPassword(req.authData.userId, req.body.password);
-        await updatePassword(req.authData.userId, req.body.newPassword);
+        await verifyCurrentPassword(req["authData"].userId, req.body.password);
+        await updatePassword(req["authData"].userId, req.body.newPassword);
         res.json({});
     } catch (error) {
         next(error);
@@ -94,7 +97,7 @@ const resetPassword = async (req, res, next) => {
 
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID)
 
-const googleUserRegister = async (req, res, next) => {
+const googleUserRegister: ControllerHandler = async (req, res, next) => {
     try {
         const {token} = req.body
         const ticket = await client.verifyIdToken({
@@ -107,7 +110,8 @@ const googleUserRegister = async (req, res, next) => {
                 email: email,
                 name: name,
                 image: picture,
-                source: "google"
+                source: "google",
+                role: ROLE.USER,
             });
             const tokens = await generateAuthTokens(newUser)
             res.json({user: newUser, tokens});
@@ -118,7 +122,7 @@ const googleUserRegister = async (req, res, next) => {
         next(error);
     }
 }
-const googleUserLogin = async (req, res, next) => {
+const googleUserLogin: ControllerHandler = async (req, res, next) => {
     try {
         const {token} = req.body
         const ticket = await client.verifyIdToken({

@@ -1,5 +1,4 @@
 import {sign, verify} from '../utils/jwtHelpers';
-import {tokenTypes} from '../config/tokens';
 
 import {RefreshTokenModel} from '../models';
 import moment, {Moment} from 'moment';
@@ -7,9 +6,11 @@ import httpStatus from 'http-status';
 
 import APIError from '../utils/ApiError';
 import {JwtPayload} from "jsonwebtoken";
+import {AuthTokenPayload, TokenType} from "../types/auth";
+import {Source} from "../models/UserModel";
 
-export const generateToken = async (userId, loginTime: Moment, expires: Moment, type: string, platform: string = "MANUAL") => {
-    const payload = {
+export const generateToken = async (userId, loginTime: Moment, expires: Moment, type: TokenType, platform: Source = "email") => {
+    const payload: AuthTokenPayload = {
         userId,
         loginTime: loginTime.toDate(),
         exp: expires.unix(),
@@ -46,7 +47,7 @@ export const generateAuthTokens = async (user) => {
         user._id,
         loginTime,
         accessTokenExpiresAt,
-        tokenTypes.ACCESS,
+        TokenType.ACCESS,
     );
 
     let refreshTokenExpiresAt = loginTime
@@ -57,7 +58,7 @@ export const generateAuthTokens = async (user) => {
         user._id,
         loginTime,
         refreshTokenExpiresAt,
-        tokenTypes.REFRESH,
+        TokenType.REFRESH,
     );
 
     await saveRefreshToken(user._id, loginTime, refreshToken);
@@ -83,14 +84,14 @@ export const generateAccessTokenFromRefreshTokenPayload = async ({
         userId,
         moment(loginTime),
         accessTokenExpiresAt,
-        tokenTypes.ACCESS,
+        TokenType.ACCESS,
         platform
     );
 };
 
 export const verifyRefreshToken = async (token) => {
     let tokenPayload = await verify(token, process.env.JWT_SECRET);
-    if (!tokenPayload || tokenPayload.type !== tokenTypes.REFRESH)
+    if (!tokenPayload || tokenPayload.type !== TokenType.REFRESH)
         throw new APIError(httpStatus.FORBIDDEN, 'Invalid Refresh Token - logout');
 
     let refreshTokenExists = await RefreshTokenModel.exists({token: token});

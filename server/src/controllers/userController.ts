@@ -1,7 +1,8 @@
 import {getUserFromId} from '../services/userService';
+import {ControllerHandler} from "../types/controller";
 
-const getUserInfo = async (req, res, next) => {
-    const userId = req.authData.userId
+const getUserInfo: ControllerHandler = async (req, res, next) => {
+    const userId = req["authData"].userId
     try {
         const user = await getUserFromId(userId)
         const responseUser = {
