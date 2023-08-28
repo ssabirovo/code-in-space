@@ -3,12 +3,14 @@ import Main from "./pages/main/main";
 import Questions from "./pages/questions/questions";
 import Question from "./pages/question/question";
 import Workshop from "./pages/workshop/workshop";
-import Login from "./pages/signUp/signUp";
-import "./assets/base.scss";
 import SignUp from "./pages/signUp/signUp";
 import SignIn from "./pages/signIn/signIn";
+import useAuth from "./hooks/useAuth";
+import "./assets/base.scss";
 
 function App(): JSX.Element {
+  const { user, loading } = useAuth();
+
   return (
     <Routes>
       <Route path="/" element={<Main />} />

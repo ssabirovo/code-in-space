@@ -1,0 +1,8 @@
+POST http://localhost:8080/api/runner/js
+Content-Type: application/json
+
+{
+  "code": "return ()=>{process.exit(0)}"
+}
+
+###

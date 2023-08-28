@@ -1,0 +1,7 @@
+{
+  "ignore": ["build","node_modules"],
+  "signal": "SIGTERM",
+  "ext": "*",
+  "exec": "ts-node src/index.ts",
+  "watch": ["src", "package.json", ".env"]
+}

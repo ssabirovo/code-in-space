@@ -23,7 +23,6 @@ const Icon: React.FC<IconProps> = ({
 
   if (!Component) {
     console.log("Icon component not found");
-
     return null;
   }
 

@@ -5,7 +5,7 @@
   * {
     margin: 0;
     padding: 0;
-    color: var(--gray-text);
+    // color: var(--gray-text);\
   }
   .container {
     background-color: var(--card-bg);
@@ -126,31 +126,28 @@
       justify-content: start;
       align-items: start;
       gap: 20px;
-      textarea {
-        transition: 0.2s linear;
-        border-radius: 8px;
-        border: 1px solid var(--card-nav-bg) !important;
-        cursor: url("../../assets/svg/cursor-input.svg"), auto;
-        &:focus {
-          transition: 0.3s linear;
-          border: 1px solid var(--title-text) !important;
-        }
-      }
+
       @media (max-width: 1020px) {
         flex-direction: column;
       }
     }
     .textarea {
+      padding: 10px;
       background: var(--card-nav-bg);
       border-radius: 8px;
       border: 1px solid var(--card-nav-bg) !important;
-      font-size: 16px;
+      font-size: 20px;
       width: 45%;
-      min-height: 230px;
+      min-height: max-content;
       overflow: scroll;
       transition: 0.2s linear;
       caret-color: var(--title-text);
-      
+      cursor: url("../../assets/svg/cursor-input.svg"), auto;
+      &:focus {
+        transition: 0.3s linear;
+        border: 1px solid var(--title-text) !important;
+      }
+
       @media (max-width: 1020px) {
         width: 100%;
       }
@@ -173,7 +170,7 @@
     }
     .iconWrong,
     .iconWrong * {
-      color: red;
+      color: #ff0000;
     }
     .iconRight,
     .iconRight * {

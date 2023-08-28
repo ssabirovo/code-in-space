@@ -4,6 +4,7 @@ import Icon from "../../assets/icons/icons";
 import { questionsData } from "./questionsData";
 import { useNavigate, useParams } from "react-router-dom";
 import cls from "./questions.module.scss";
+import { log } from "console";
 
 interface MainProps {}
 
@@ -11,6 +12,9 @@ const Questions: React.FC<MainProps> = () => {
   const navigate = useNavigate();
   const { questions } = useParams();
 
+  
+
+  
   return (
     <>
       <Navbar />
@@ -28,8 +32,8 @@ const Questions: React.FC<MainProps> = () => {
               Simple warmup problems to get started
             </p>
             <div className={cls.questions}>
-              {questionsData.map(({ title, checked }) => (
-                <p onClick={() => navigate(`/${questions}/${title}`)}>
+              {questionsData.map(({ title, checked }, id) => (
+                <p key={id} onClick={() => navigate(`/${questions}/${title}`)}>
                   {title}
                   {checked && <i className="fa-solid fa-check"></i>}
                 </p>
