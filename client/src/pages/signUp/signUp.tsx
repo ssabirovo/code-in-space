@@ -1,12 +1,14 @@
 import React from "react";
 import Frame from "../../components/frame/frame";
-import cls from "./login.module.scss";
 import Logo from "../../assets/svg/Group 1.svg";
 import { useNavigate } from "react-router-dom";
+import Input from "../../components/input/input";
+import Button2 from "../../components/button2/button2";
+import cls from "./signUp.module.scss";
 
 interface MainProps {}
 
-const Login: React.FC<MainProps> = () => {
+const SignUp: React.FC<MainProps> = () => {
   const navigate = useNavigate();
 
   return (
@@ -15,13 +17,13 @@ const Login: React.FC<MainProps> = () => {
         <div className={cls.content}>
           <img onClick={() => navigate("/")} src={Logo} alt="" />
           <div className={cls.form}>
-            <h3>Login to C I S</h3>
-            <input name="email" type="email" placeholder="Email" />
-            <button>Sign in</button>
+            <h3>Sign up to C I S</h3>
+            <Input placeholder="Email" name="email" type="email" />
+            <Button2 content="Sign up" />
           </div>
           <span className="d-flex gap-2">
             <b>Already have an account?{"  "} </b>
-            <p onClick={() => navigate("/")}> Sign Up</p>
+            <p onClick={() => navigate("/signIn")}> Sign in</p>
           </span>
         </div>
       </Frame>
@@ -29,4 +31,4 @@ const Login: React.FC<MainProps> = () => {
   );
 };
 
-export default Login;
+export default SignUp;

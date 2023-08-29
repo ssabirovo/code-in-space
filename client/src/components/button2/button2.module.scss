@@ -1,1 +1,16 @@
-@import "../../assets/mixins";
+.button {
+  border: none;
+  background-color: var(--card-nav-bg);
+  width: 100%;
+  padding: 0.7rem 0;
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--title-text);
+  border-radius: 8px;
+  transition: 0.2s linear;
+  border: 1px solid var(--card-nav-bg);
+  cursor: url("../../assets/svg/cursor-pointer.svg"), auto !important;
+  &:hover {
+    border: 1px solid var(--title-text);
+  }
+}

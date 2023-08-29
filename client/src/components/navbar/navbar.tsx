@@ -17,7 +17,7 @@ const Navbar: React.FC<NavProps> = () => {
         className={cls.logo}
       />
       <div className={cls.auth}>
-        <Button onClick={()=>navigate("/login")} content="Login" planet="YellowPlanet" />
+        <Button onClick={()=>navigate("/signIn")} content="Login" planet="YellowPlanet" />
       </div>
     </div>
   );
