@@ -4,7 +4,7 @@ import get from "lodash/get";
 import cx from "classnames";
 import cls from "./icons.module.scss";
 
-interface IconProps {
+export interface IconProps {
   name: keyof typeof List;
   size?: number;
   className?: string;

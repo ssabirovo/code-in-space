@@ -1,5 +1,5 @@
 .wrapper {
-  padding: 0rem 2%;
+  padding: 0rem 9%;
   margin-bottom: 2rem;
 
   * {
@@ -58,7 +58,7 @@
       border: none;
       margin-bottom: 5px;
       width: 100px;
-      cursor: none;
+      cursor: url("../../assets/svg/cursor-pointer.svg"), auto;
 
       transition-property: all;
       transition-duration: 0.2s;

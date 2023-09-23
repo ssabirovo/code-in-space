@@ -6,7 +6,9 @@ import Workshop from "./pages/workshop/workshop";
 import SignUp from "./pages/signUp/signUp";
 import SignIn from "./pages/signIn/signIn";
 import useAuth from "./hooks/useAuth";
+import Problems from "./pages/admin-problems/problems";
 import "./assets/base.scss";
+import AddProblem from "./pages/addProblem/addProblem";
 
 function App(): JSX.Element {
   const { user, loading } = useAuth();
@@ -19,6 +21,8 @@ function App(): JSX.Element {
       <Route path="/workshop" element={<Workshop />} />
       <Route path="/signUp" element={<SignUp />} />
       <Route path="/signIn" element={<SignIn />} />
+      <Route path="/admin/problems" element={<Problems />} />
+      <Route path="/admin/addProblem" element={<AddProblem />} />
     </Routes>
   );
 }

@@ -1,0 +1,133 @@
+.wrapper {
+  display: flex;
+
+  .content {
+    background-color: var(--card-bg);
+    width: 100vw;
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    margin: 37px 30px;
+    border-radius: 23px;
+    padding: 30px;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  .search {
+    display: flex;
+    padding: 10px;
+    background-color: var(--card-nav-bg);
+    border-radius: 8px;
+    input {
+      background-color: transparent;
+      border: none;
+      padding: 0 20px;
+      &::placeholder {
+        color: var(--gray-text);
+      }
+    }
+    div {
+      background-color: var(--title-text);
+      padding: 4px;
+      border-radius: 6px;
+    }
+  }
+  .addBtn {
+    background-color: transparent;
+    color: var(--title-text);
+    border-radius: 8px;
+    border: 1px solid var(--title-text);
+    padding: 10px 30px;
+    cursor: url(../../assets/svg/cursor-pointer.svg), auto;
+    transition: 0.2s linear;
+    &:hover {
+      background-color: var(--title-text);
+      color: var(--primary);
+    }
+  }
+  .table {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    gap: 5px;
+  }
+  tbody {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    gap: 5px;
+  }
+  tr {
+    background-color: var(--card-nav-bg);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 30px;
+    align-items: center;
+  }
+  .tr {
+    background-color: var(--card-nav-bg);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px;
+    * {
+      transition: 0.2s linear;
+      color: var(--text);
+    }
+    &:hover *,
+    div {
+      color: var(--title-text);
+    }
+  }
+
+  .actions {
+    width: 20%;
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+
+    .pen,
+    .trash {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      padding: 10px;
+      border: 1px solid var(--text);
+    }
+
+    .pen:hover,
+    .trash:hover {
+      border: 1px solid var(--skyblue);
+      * {
+        color: var(--secondary);
+      }
+    }
+    .trash:hover {
+      border: 1px solid var(--red);
+    }
+  }
+  td {
+    height: max-content;
+    width: 30%;
+  }
+  th {
+    height: max-content;
+    width: 30%;
+  }
+
+  .modalContent {
+    width: 40%;
+    background-color: white;
+  }
+}

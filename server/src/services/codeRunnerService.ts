@@ -1,5 +1,3 @@
-import ApiError from "../utils/ApiError";
-
 export const runJsCodeFromString = async (code: string): Promise<string> => {
     try {
         if (code.match(/^return \(\)=>\{(.+)}$/)) {

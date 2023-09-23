@@ -3,6 +3,7 @@ import authRoute from './authRoute';
 import userRoute from './userRoute';
 import categoryRoute from "./categoryRoute";
 import codeRunnerRoute from "./codeRunnerRoute";
+import taskRoute from "./taskRoute";
 
 const router = express.Router();
 
@@ -18,5 +19,6 @@ router.get('/status', (req, res) => {
 router.use('/auth', authRoute); //add routes
 router.use('/user', userRoute)
 router.use('/category', categoryRoute)
+router.use('/task', taskRoute)
 router.use('/runner', codeRunnerRoute)
 export default router;
