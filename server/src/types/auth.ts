@@ -1,4 +1,4 @@
-import {IUser, Source} from "../models/UserModel";
+import {Source} from "../models/UserModel";
 
 export enum TokenType {
     ACCESS = 'access',

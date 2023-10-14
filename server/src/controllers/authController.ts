@@ -85,14 +85,15 @@ const login: ControllerHandler = async (req, res, next) => {
     }
 };
 
-const requestCode: ControllerHandler = async (req, res, next) => {
-    try {
+// const requestCode: ControllerHandler = async (req, res, next) => {
+//     try {
         //TODO manual request code
-        res.json({});
-    } catch (error) {
-        next(error);
-    }
-}
+
+//         res.json({});
+//     } catch (error) {
+//         next(error);
+//     }
+// }
 
 const logout: ControllerHandler = async (req, res, next) => {
     try {
