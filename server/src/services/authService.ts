@@ -1,11 +1,17 @@
-import {UserModel} from '../models';
+import {ActivateCode, UserModel} from '../models';
 import httpStatus from 'http-status';
 
 import APIError from '../utils/ApiError';
 import bcrypt from 'bcryptjs';
 import {JwtPayload} from "jsonwebtoken";
+import {IUser} from "../models/UserModel";
+import {ObjectId} from "mongoose";
+import {randomInt} from "crypto";
+import moment from "moment";
+import {sendEmail} from "./emailService";
+import logger from "../config/logger";
 
-export const createNewUser = async (user) => {
+export const createNewUser = async (user: Partial<Omit<IUser, "_id">>) => {
     const oldUser = await UserModel.findOne({email: user.email.toLowerCase()});
     if (oldUser)
         throw new APIError(httpStatus.BAD_REQUEST, "Email already exists.")
@@ -104,4 +110,63 @@ export const updatePassword = async (userId, newPassword) => {
     if (!user)
         throw new APIError(httpStatus.UNAUTHORIZED, 'invalid access token user');
 };
+
+export const sendCode = async (userId: string | ObjectId) => {
+    let user = await UserModel.findById(userId);
+    if (!user)
+        throw new APIError(httpStatus.UNAUTHORIZED, 'invalid access token user');
+    let activateCode = await generateActivateCode(userId);
+    const text: string = `
+    <h1>Hello ${user.email}</h1>
+    <p>While ago someone register this email to service <b>${process.env.CURRENT_PROJECT}</b>.
+    If it is not you please ignore this message.
+    
+    Your code:
+    
+    <h3>${activateCode.code}</h3>
+    </p>
+    <p style="margin-top: 5rem"></p>
+    `
+    let sentMessageInfo = await sendEmail({
+        to: user.email,
+        subject: "Verification code",
+        html: text,
+    });
+    logger.info(sentMessageInfo)
+}
+
+
+export const generateActivateCode = async (userId: string | ObjectId) => {
+    let user = await UserModel.findById(userId);
+    if (!user)
+        throw new APIError(httpStatus.UNAUTHORIZED, 'invalid access token user');
+    let exciteCode = await ActivateCode.findOne({userId});
+    if (exciteCode) {
+        await ActivateCode.deleteMany({userId})
+    }
+    let code = randomInt(100000, 999999);
+    logger.info(`Code is ${code}`)
+    let activateCode = new ActivateCode({
+        code,
+        userId,
+        expireTime: moment().clone().add(process.env.ACTIVATE_CODE_EXPIRATION_MINUTES, "minutes").toDate(),
+    });
+    return await activateCode.save();
+}
+
+export const validateCode = async (userId: string | ObjectId, code: number): Promise<Boolean> => {
+    let activateCode = await ActivateCode.findOne({userId});
+    if(!activateCode){
+        throw new APIError(httpStatus.BAD_REQUEST, "Code didn't request")
+    }
+    return code === activateCode.code;
+
+}
+
+export const activeUser = async (userId: string | ObjectId) => {
+    let user = await UserModel.findOneAndUpdate({_id: userId}, {active: true}, {new: true});
+    if (!user)
+        throw new APIError(httpStatus.UNAUTHORIZED, 'invalid access token user');
+}
+
   

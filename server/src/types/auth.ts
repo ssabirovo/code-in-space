@@ -1,4 +1,4 @@
-import {Source} from "../models/UserModel";
+import {IUser, Source} from "../models/UserModel";
 
 export enum TokenType {
     ACCESS = 'access',
@@ -12,3 +12,5 @@ export type AuthTokenPayload = {
     type: TokenType,
     platform: Source,
 }
+
+

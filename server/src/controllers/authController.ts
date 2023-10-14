@@ -1,9 +1,11 @@
 import bcryptjs from 'bcryptjs';
 import {
+    activeUser,
     createNewUser,
     fetchUserFromEmail,
     fetchUserFromEmailAndPassword,
-    updatePassword,
+    sendCode,
+    updatePassword, validateCode,
     verifyCurrentPassword,
     verifyUserFromRefreshTokenPayload
 } from '../services/authService';
@@ -19,6 +21,8 @@ import {userMapper} from "../utils/mapper/userMapper";
 import ApiError from "../utils/ApiError";
 import {ROLE} from "../models/UserModel";
 import {ControllerHandler} from "../types/controller";
+import logger from "../config/logger";
+import httpStatus from "http-status";
 
 
 const register: ControllerHandler = async (req, res, next) => {
@@ -38,11 +42,32 @@ const register: ControllerHandler = async (req, res, next) => {
             secure: true,
             path: "/",
         })
+        await sendCode(newUser._id);
         res.json({user: userMapper(newUser), tokens});
     } catch (error) {
         next(error);
     }
 };
+
+const validateActivateCode: ControllerHandler = async (req, res, next) => {
+    try {
+        const {code}=req.body
+        logger.info(JSON.stringify(req["authData"]))
+        let userId=req["authData"]["userId"]
+        logger.info(userId);
+        let result = await validateCode(userId, code);
+        if(!result){
+            throw new ApiError(httpStatus.BAD_REQUEST, "Activate code is forbidden")
+        }
+        await activeUser(userId)
+        res.json({
+            success: true,
+            message: "Verified!"
+        })
+    }catch (e) {
+        next(e)
+    }
+}
 
 const login: ControllerHandler = async (req, res, next) => {
     try {
@@ -59,6 +84,15 @@ const login: ControllerHandler = async (req, res, next) => {
         next(error);
     }
 };
+
+const requestCode: ControllerHandler = async (req, res, next) => {
+    try {
+        //TODO manual request code
+        res.json({});
+    } catch (error) {
+        next(error);
+    }
+}
 
 const logout: ControllerHandler = async (req, res, next) => {
     try {
@@ -105,10 +139,10 @@ const googleUserRegister: ControllerHandler = async (req, res, next) => {
             audience: process.env.CLIENT_ID
         })
         if (typeof ticket.getPayload() !== "undefined") {
-            const {email, picture} = ticket.getPayload();
+            const {email, picture, name} = ticket.getPayload();
             const newUser = await createNewUser({
-                email: email,
-                name: name,
+                email,
+                name,
                 image: picture,
                 source: "google",
                 role: ROLE.USER,
@@ -143,5 +177,5 @@ const googleUserLogin: ControllerHandler = async (req, res, next) => {
 }
 
 export default {
-    login, logout, refreshToken, resetPassword, register, googleUserRegister, googleUserLogin
+    login, logout, refreshToken, resetPassword, register, googleUserRegister, googleUserLogin, validateActivateCode
 }
