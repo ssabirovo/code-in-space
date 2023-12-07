@@ -4,7 +4,7 @@ import get from "lodash/get";
 import cx from "classnames";
 import cls from "./icons.module.scss";
 
-interface IconProps {
+export interface IconProps {
   name: keyof typeof List;
   size?: number;
   className?: string;
@@ -23,7 +23,6 @@ const Icon: React.FC<IconProps> = ({
 
   if (!Component) {
     console.log("Icon component not found");
-
     return null;
   }
 

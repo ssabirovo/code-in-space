@@ -1,18 +1,35 @@
-import React from "react";
+import React, { useRef } from "react";
 import Navbar from "../../components/navbar/navbar";
-import cls from "./question.module.scss";
 import Icon from "../../assets/icons/icons";
 import { useNavigate, useParams } from "react-router-dom";
-import CodeEditor from "@uiw/react-textarea-code-editor";
+import ReactCodeMirror from "@uiw/react-codemirror";
+import { javascript } from "@codemirror/lang-javascript";
+import { draculaInit } from "@uiw/codemirror-theme-dracula";
+import cls from "./question.module.scss";
 
 interface MainProps {}
+
+let array = ["abc hi ho", "ABChi hi", "hihi"];
+
+let newArr: any = [];
 
 const Question: React.FC<MainProps> = () => {
   const navigate = useNavigate();
   const { question, questions } = useParams();
-  const values = `function ${question} (a) {\n  return "";\n}`;
+  const codeArea = useRef<HTMLTextAreaElement>(null);
+  const values = `function ${question} (a) { \n return "";\n}\n`;
 
-  console.log(question, questions);
+  const runCode = () => {
+    try {
+      let neaw: any = ["af", "afaf", "sfaf"];
+      array.map((arr) => neaw.push(eval(`(${codeArea.current?.value})`)(arr)));
+
+      newArr = neaw;
+      console.log(newArr);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -45,33 +62,47 @@ const Question: React.FC<MainProps> = () => {
               <p>helloName("Bob") → "Hello Bob!"</p>
               <p>helloName("Bob") → "Hello Bob!"</p>
             </div>
-            <button className={cls.solve}>Run</button>
+            <button onClick={() => runCode()} className={cls.solve}>
+              Run
+            </button>
             <div className={cls.coding}>
-              <CodeEditor
-                className={cls.textarea}
-                language="js"
-                data-color-mode="dark"
-                value={values}
-                padding={20}
-              />
+              <div className={cls.textarea}>
+                <ReactCodeMirror
+                  height="100%"
+                  value={values}
+                  theme={draculaInit({
+                    settings: {
+                      background: "#1A2332",
+                      gutterBackground: "#1A2332",
+                      lineHighlight: "#1A2332",
+                    },
+                  })}
+                  extensions={[javascript()]}
+                />
+              </div>
+
               <table className={cls.table}>
                 <thead>
-                  <th>Test -Expected</th>
-                  <th>Yours</th>
+                  <tr>
+                    <th>Test -Expected</th>
+                    <th>Yours</th>
+                  </tr>
                 </thead>
-                <tr>
-                  <td>monkeyTrouble(true, true) → true</td>
-                  <td className={cls.iconRight}>
-                    true {<i className="fa-solid fa-check"></i>}
-                  </td>
-                </tr>
-                <tr>
-                  <td>doubleChar("Hi-There") → "HHii--TThheerree"</td>
-                  <td className={cls.iconWrong}>
-                    HHii--TThheerree{" "}
-                    {<i className="fa-solid fa-check iconWrong"></i>}
-                  </td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td>monkeyTrouble(true, true) → true</td>
+                    <td className={cls.iconRight}>
+                      true {<i className="fa-solid fa-check"></i>}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>doubleChar("Hi-There") → "HHii--TThheerree"</td>
+                    <td className={cls.iconWrong}>
+                      HHii--TThheerree{" "}
+                      {<i className="fa-solid fa-check iconWrong"></i>}
+                    </td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </div>

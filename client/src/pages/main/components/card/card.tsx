@@ -1,6 +1,5 @@
 import React from "react";
 import Icon from "../../../../assets/icons/icons";
-import { useRef } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import cls from "./card.module.scss";
