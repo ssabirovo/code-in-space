@@ -1,3 +1,5 @@
+import * as Yup from "yup";
+
 const validate = (schema) => async (req, res, next) => {
     try {
         await schema.validate({
@@ -10,5 +12,8 @@ const validate = (schema) => async (req, res, next) => {
         next(err);
     }
 };
+
+
+export const EmailYup=Yup.string().email().required().nullable(false);
 
 export default validate;

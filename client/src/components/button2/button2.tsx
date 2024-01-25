@@ -2,16 +2,13 @@ import React from "react";
 import cx from "classnames";
 import cls from "./button2.module.scss";
 
-interface ButtonProps {
-  content: string;
-  onClick?: () => void;
-  className?: string;
-}
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
-const Button2: React.FC<ButtonProps> = ({ content, onClick, className }) => {
+const Button2: React.FC<ButtonProps> = (props) => {
+  const { children, className } = props;
   return (
-    <button onClick={onClick} className={cx(cls.button, className)}>
-      {content}
+    <button {...props} className={cx(cls.button, className)}>
+      {children}
     </button>
   );
 };

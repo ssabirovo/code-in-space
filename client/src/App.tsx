@@ -7,8 +7,8 @@ import SignUp from "./pages/signUp/signUp";
 import SignIn from "./pages/signIn/signIn";
 import useAuth from "./hooks/useAuth";
 import Problems from "./pages/admin-problems/problems";
-import "./assets/base.scss";
 import AddProblem from "./pages/addProblem/addProblem";
+import "./assets/base.scss";
 
 function App(): JSX.Element {
   const { user, loading } = useAuth();

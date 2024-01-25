@@ -58,7 +58,7 @@ const schemas = {
         body: yup.object({
             token: yup.string().required()
         })
-    })
+    }),
 }
 
 export default schemas;

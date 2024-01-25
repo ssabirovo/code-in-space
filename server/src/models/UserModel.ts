@@ -17,6 +17,7 @@ export interface IUser {
     source: Source,
     role: ROLE,
     _id: string,
+    active: boolean,
 }
 
 const userSchema = new mongoose.Schema<IUser>({
@@ -30,6 +31,11 @@ const userSchema = new mongoose.Schema<IUser>({
     role: {
         type: String,
         enum: Object.values(ROLE)
+    },
+    active: {
+        type: Boolean,
+        required: true,
+        default: false,
     }
 }, {collection: "users"})
 

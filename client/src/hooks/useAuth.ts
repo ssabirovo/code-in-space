@@ -35,7 +35,7 @@ const useAuth = () => {
       axios
         .get<IUser>("auth/me", {
           headers: {
-            Authorization: `Bearer ${accesToken}`,
+            Authrization: `Bearer ${accesToken}`,
           },
         })
         .then((res) => {
@@ -47,7 +47,10 @@ const useAuth = () => {
         });
   }, [accesToken]);
 
-  return useMemo(() => ({ loading, user }), [loading, user]);
+  return useMemo(
+    () => ({ loading, user, accesToken, setAccesToken }),
+    [loading, user, accesToken]
+  );
 };
 
 export default useAuth;

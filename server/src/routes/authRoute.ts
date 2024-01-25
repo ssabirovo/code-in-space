@@ -12,6 +12,11 @@ router
     .route('/login')
     .post( validate(schemas.loginSchema), controller.login);
 
+
+router
+    .route('/code/validate')
+    .post(isActiveUser, controller.validateActivateCode);
+
 router
     .route('/logout')
     .post( validate(schemas.logoutSchema), controller.logout);

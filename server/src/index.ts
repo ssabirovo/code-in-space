@@ -32,6 +32,7 @@ mongoose.connect(CONNECTION_URL).then(() => {
         logger.info(`Server started as ${process.env.NODE_ENV}`)
     });
 })
+
 const exitHandler = () => {
     if (server) {
         server.close(() => {
