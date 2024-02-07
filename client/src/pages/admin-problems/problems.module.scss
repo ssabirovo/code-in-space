@@ -32,24 +32,17 @@
         color: var(--gray-text);
       }
     }
-    div {
+    button {
       background-color: var(--title-text);
       padding: 4px;
       border-radius: 6px;
+      border: none;
     }
   }
   .addBtn {
-    background-color: transparent;
-    color: var(--title-text);
-    border-radius: 8px;
-    border: 1px solid var(--title-text);
-    padding: 10px 30px;
-    cursor: url(../../assets/svg/cursor-pointer.svg), auto;
-    transition: 0.2s linear;
-    &:hover {
-      background-color: var(--title-text);
-      color: var(--primary);
-    }
+    width: max-content;
+    padding-left: 50px;
+    padding-right: 50px;
   }
   .table {
     width: 100%;

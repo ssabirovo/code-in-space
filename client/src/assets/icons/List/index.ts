@@ -6,3 +6,4 @@ export { default as Sun } from "./sun";
 export { default as Search } from "./search";
 export { default as Pen } from "./pen";
 export { default as Trash } from "./trash";
+export { default as Minus } from "./minus";
