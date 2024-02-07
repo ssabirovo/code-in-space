@@ -14,7 +14,7 @@ export const addCategory = async (category: Omit<Partial<ICategory>, "id">): Pro
 
 export const editCategory = async (id: string, category: Omit<Partial<ICategory>, "id">): Promise<ICategory> => {
     await Category.findByIdAndUpdate(id, category);
-    return await Category.findById(id)
+    return Category.findById(id);
 }
 
 export const deleteCategory = async (id: string) => {
