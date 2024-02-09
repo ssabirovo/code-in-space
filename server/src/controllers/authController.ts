@@ -36,12 +36,6 @@ const register: ControllerHandler = async (req, res, next) => {
             role: ROLE.USER,
         });
         const tokens = await generateAuthTokens(newUser)
-        res.cookie("refreshToken", tokens.refreshToken, {
-            expires: moment().day(process.env.REFRESH_TOKEN_EXPIRATION_DAYS ?? 0).toDate(),
-            httpOnly: true,
-            secure: true,
-            path: "/",
-        })
         await sendCode(newUser._id);
         res.json({user: userMapper(newUser), tokens});
     } catch (error) {
@@ -73,12 +67,6 @@ const login: ControllerHandler = async (req, res, next) => {
     try {
         const user = await fetchUserFromEmailAndPassword(req.body);
         const tokens = await generateAuthTokens(user);
-        res.cookie("refreshToken", tokens.refreshToken, {
-            expires: moment().day(process.env.REFRESH_TOKEN_EXPIRATION_DAYS ?? 0).toDate(),
-            httpOnly: true,
-            secure: true,
-            path: "/",
-        })
         res.json({user: userMapper(user), tokens});
     } catch (error) {
         next(error);

@@ -8,7 +8,6 @@ const router = express.Router();
 router
     .route('/')
     .get(
-        
         isActiveUser,
         controller.getUserInfo
     );

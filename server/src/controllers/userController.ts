@@ -8,6 +8,7 @@ const getUserInfo: ControllerHandler = async (req, res, next) => {
         const responseUser = {
             id: user._id,
             email: user.email,
+            role: user.role,
         }
         res.json({user: responseUser});
     } catch (error) {
